@@ -1,8 +1,8 @@
 <template>
-    <v-card width="100%" class="overflow-y-auto" rounded="md" border="success sm opacity-100" height="700">
-        <v-card-text>
+    <v-card width="100%" rounded="md" :border="false" min-height="700" max-height="2000" >
+        <v-card-text class="pt-0 px-0">
             <v-row class="d-flex justify-center">
-                <v-col cols="4" v-for="(item, index) in [...productList, ...productList]" :key="index">
+                <v-col cols="3" v-for="(item, index) in [...productList, ...productList]" :key="index">
                     <v-card width="100%" min-height="400px"
                         class="fill-height border-a-sm border-opacity-50 border-black elevation-0 rounded-md">
                         <v-card-text>
@@ -53,6 +53,34 @@ const productList = [
         productName: "Elektrik Kablosu",
         subtitle: "29cm",
         price: "300₺",
+    },
+    {
+        url: "",
+        categoryName: "Moda",
+        productName: "T-Shirt",
+        subtitle: "L",
+        price: "50₺",
+    },
+    {
+        url: "",
+        categoryName: "Moda",
+        productName: "T-Shirt",
+        subtitle: "L",
+        price: "50₺",
+    },
+    {
+        url: "",
+        categoryName: "Moda",
+        productName: "T-Shirt",
+        subtitle: "L",
+        price: "50₺",
+    },
+    {
+        url: "",
+        categoryName: "Moda",
+        productName: "T-Shirt",
+        subtitle: "L",
+        price: "50₺",
     },
     {
         url: "",

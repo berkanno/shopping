@@ -10,21 +10,21 @@
                         Shopping
                     </v-col>
                     <v-spacer />
-                    <v-col cols="auto d-flex align-center">
+                    <!-- <v-col cols="auto d-flex align-center">
                         <v-icon size="35" >mdi-heart-outline</v-icon>
                     </v-col>
                     <v-col cols="auto d-flex align-center">
                         <v-icon size="35" >mdi-cart-outline</v-icon>
-                    </v-col>
+                    </v-col> -->
                     <v-col cols="auto d-flex align-center">
                         <v-card :elevation="0" rounded="xl" border="success sm opacity-100"  width="100%" height="100%">
                            <v-card-text>
                             <v-row align="center">
                                 <v-col cols="auto text-body-1 font-weight-100">
-                                    John M. C.
+                                    -
                                 </v-col>
                                 <v-col cols="auto pl-1">
-                                    <v-icon color="teal-darken-4" >mdi-account</v-icon>
+                                    <v-icon color="teal-darken-4" >mdi-account-alert</v-icon>
                                 </v-col>
                             </v-row>
                            </v-card-text>
