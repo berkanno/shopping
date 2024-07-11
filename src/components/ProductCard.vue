@@ -63,16 +63,3 @@ const productList = [
     },
 ]
 </script>
-<style scoped>
-::-webkit-scrollbar {
-    width: 11px;
-    background-color: rgba(173, 177, 177, 0);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(69, 177, 157, 0.409);
-    border-radius: 40px;
-    cursor: pointer;
-}
-</style>

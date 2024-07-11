@@ -13,3 +13,16 @@
 import VAppBarComp from "@/components/VAppBarComp.vue";
 import Content from "@/components/Content.vue";
 </script>
+<style>
+::-webkit-scrollbar {
+  width: 11px;
+  background-color: rgba(173, 177, 177, 0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 86, 73, 0.688);
+  border-radius: 40px;
+  cursor: pointer;
+}
+</style>
