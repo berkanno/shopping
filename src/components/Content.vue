@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12">
+    <v-col cols="12 pt-0">
       <CategoryCard />
     </v-col>
     <v-col cols="10" class="fill-height my-5">

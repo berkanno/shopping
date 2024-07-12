@@ -1,24 +1,6 @@
 <template>
   <v-row class="flex-column">
     <LoginComponent />
-    <v-col>
-      <v-expansion-panels :elevation="0" v-model="expandedFirstVModel" multiple>
-        <v-expansion-panel
-          class="elevation-0"
-          :class="`border-success border-opacity-100 ${
-            expandedFirstVModel[0] == 0 ? 'border-sm ' : 'border-b-sm'
-          }`"
-        >
-          <v-expansion-panel-title
-            class="text-uppercase ext-body-2 text-teal-darken-1 font-weight-medium d-flex justify-center"
-            expand-icon="mdi-chevron-down"
-            collapse-icon="mdi-chevron-up"
-            >Alt Kategorİ
-          </v-expansion-panel-title>
-          <v-expansion-panel-text> Some content </v-expansion-panel-text>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </v-col>
     <v-col class="py-0">
       <v-expansion-panels :elevation="0" v-model="expandedSecondVModel">
         <v-expansion-panel
@@ -96,7 +78,7 @@
 <script lang="ts" setup>
 import LoginComponent from "@/components/LoginComponent.vue";
 import { ref, watch } from "vue";
-const expandedFirstVModel = ref([0]);
+
 const expandedSecondVModel = ref(0);
 const expandedThirdVModel = ref(0);
 const expandedFourthVModel = ref(0);
