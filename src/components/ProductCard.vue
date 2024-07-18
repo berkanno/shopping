@@ -10,10 +10,10 @@
     <v-card-text class="pt-0 px-0">
       <v-row class="d-flex justify-center">
         <v-col
-          cols="3"
-          v-for="(item, index) in productList.filter((e) =>
-            categoryNameListForFilter.includes(e.categoryName)
-          )"
+          sm="12"
+          md="6"
+          lg="3"
+          v-for="(item, index) in productList"
           :key="index"
         >
           <v-card
@@ -96,7 +96,7 @@ import { storeToRefs } from "pinia";
 import { useCategoryStore } from "@/store/categoryStore";
 
 const categoryStore = useCategoryStore();
-const { categoryNameListForFilter } = storeToRefs(categoryStore);
+const {  } = storeToRefs(categoryStore);
 
 const productStore = useProductStore();
 const { productList } = storeToRefs(productStore);
