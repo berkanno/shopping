@@ -12,7 +12,8 @@
         <v-col
           sm="12"
           md="6"
-          lg="3"
+          lg="4"
+          xl="3"
           v-for="(item, index) in productList"
           :key="index"
         >

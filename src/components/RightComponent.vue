@@ -1,24 +1,7 @@
 <template>
   <v-row class="flex-column">
     <LoginComponent />
-    <v-col class="py-0">
-      <v-expansion-panels :elevation="0" v-model="expandedSecondVModel">
-        <v-expansion-panel
-          class="elevation-0"
-          :class="`border-success border-opacity-100 ${
-            expandedSecondVModel == 0 ? 'border-sm ' : 'border-b-sm'
-          }`"
-        >
-          <v-expansion-panel-title
-            class="text-uppercase ext-body-2 text-teal-darken-1 font-weight-medium d-flex justify-center"
-            expand-icon="mdi-chevron-down"
-            collapse-icon="mdi-chevron-up"
-            >Fİltre</v-expansion-panel-title
-          >
-          <v-expansion-panel-text> Some content </v-expansion-panel-text>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </v-col>
+    <FilterComponent />
     <v-col>
       <v-expansion-panels :elevation="0" v-model="expandedThirdVModel">
         <v-expansion-panel
@@ -77,9 +60,9 @@
 </template>
 <script lang="ts" setup>
 import LoginComponent from "@/components/LoginComponent.vue";
-import { ref, watch } from "vue";
+import FilterComponent from "@/components/FilterComponent.vue";
+import { ref } from "vue";
 
-const expandedSecondVModel = ref(0);
 const expandedThirdVModel = ref(0);
 const expandedFourthVModel = ref(0);
 </script>

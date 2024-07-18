@@ -1,5 +1,5 @@
 import { defineStore, storeToRefs } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useCategoryStore } from "./categoryStore";
 
 export const useProductStore = defineStore("productStore", () => {
@@ -1184,20 +1184,65 @@ export const useProductStore = defineStore("productStore", () => {
     },
   ]);
 
+  const rangeSliderValue = ref([] as (number | string)[]);
+  const isRangeIconToPrice = ref(false)
+
+  const maxPrice = computed(() => {
+    let count = 0;
+    defaultProductList.value.forEach((e) => {
+      if (Number(e.price.replace(/₺/g, "")) > count)
+        count = Number(e.price.replace(/₺/g, ""));
+    });
+    return count;
+  });
+
+  const minPrice = computed(() => {
+    let count = 1000;
+    defaultProductList.value.forEach((e) => {
+      if (Number(e.price.replace(/₺/g, "")) < count)
+        count = Number(e.price.replace(/₺/g, ""));
+    });
+    return count;
+  });
+
   const filterProduct = async () => {
     let allProducts = JSON.parse(JSON.stringify(defaultProductList.value));
+    console.log("rangeSliderValue", rangeSliderValue.value);
 
     const categoryStore = await useCategoryStore();
     const { categoryNameListForFilter } = storeToRefs(categoryStore);
     if (categoryNameListForFilter.value.length) {
-        allProducts = allProducts.filter((e) =>
+      allProducts = allProducts.filter((e) =>
         categoryNameListForFilter.value.includes(e.categoryName)
       );
     }
 
-    
+    if (
+      minPrice.value != rangeSliderValue.value[0] &&
+      rangeSliderValue.value[0]
+    ) {
+      allProducts = allProducts.filter(
+        e => Number(e.price.replace(/₺/g, "")) >= rangeSliderValue.value[0]
+      );
+    }
+    if (
+      maxPrice.value != rangeSliderValue.value[1] &&
+      rangeSliderValue.value[1]
+    ) {
+      allProducts = allProducts.filter(
+        e => Number(e.price.replace(/₺/g, "")) <= rangeSliderValue.value[1]
+      );
+    }
 
     productList.value = allProducts;
   };
-  return { productList, defaultProductList, filterProduct };
+  return {
+    productList,
+    defaultProductList,
+    rangeSliderValue,
+    maxPrice,
+    minPrice,
+    isRangeIconToPrice,
+    filterProduct,
+  };
 });
