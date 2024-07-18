@@ -2,8 +2,21 @@ import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { useCategoryStore } from "./categoryStore";
 
+type ProductDto = {
+    id: number
+    url: string
+    categoryName: string
+    displayName: string
+    name: string
+    merchantName: string
+    brandName: string
+    price: string
+    productRate: number
+    stockCount: number
+    rate: number
+}
 export const useProductStore = defineStore("productStore", () => {
-  const productList = ref([
+  const productList = ref<ProductDto[]>([
     {
       id: 23,
       url: "",
@@ -15,6 +28,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "300₺",
       productRate: 4,
       stockCount: 4,
+      rate: 4,
     },
     {
       id: 24,
@@ -27,6 +41,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 5,
       stockCount: 42,
+      rate: 3,
     },
     {
       id: 25,
@@ -39,6 +54,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "450₺",
       productRate: 2,
       stockCount: 200,
+      rate: 0,
     },
     {
       id: 26,
@@ -51,6 +67,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "600₺",
       productRate: 3,
       stockCount: 1,
+      rate: 3,
     },
     {
       id: 27,
@@ -63,6 +80,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "10₺",
       productRate: 4,
       stockCount: 67,
+      rate: 4,
     },
     {
       id: 28,
@@ -75,6 +93,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
     {
       id: 29,
@@ -87,6 +106,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 3.5,
     },
     {
       id: 30,
@@ -99,6 +119,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 0,
     },
     {
       id: 31,
@@ -111,6 +132,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 1.5,
     },
     {
       id: 32,
@@ -123,6 +145,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 33,
@@ -135,6 +158,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 34,
@@ -147,6 +171,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 35,
@@ -159,6 +184,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "10₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 36,
@@ -171,6 +197,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 37,
@@ -183,6 +210,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 38,
@@ -195,6 +223,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 2,
     },
     {
       id: 39,
@@ -207,6 +236,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 40,
@@ -219,6 +249,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 41,
@@ -231,6 +262,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 42,
@@ -243,6 +275,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 43,
@@ -255,6 +288,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 44,
@@ -267,6 +301,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 45,
@@ -279,6 +314,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 2,
     },
     {
       id: 46,
@@ -291,6 +327,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 47,
@@ -303,6 +340,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 48,
@@ -315,6 +353,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 49,
@@ -327,6 +366,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 50,
@@ -339,6 +379,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 4,
     },
     {
       id: 51,
@@ -351,6 +392,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 52,
@@ -363,6 +405,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 9,
     },
     {
       id: 53,
@@ -375,6 +418,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 54,
@@ -387,6 +431,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 5,
     },
     {
       id: 55,
@@ -399,6 +444,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 56,
@@ -411,6 +457,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
     {
       id: 57,
@@ -423,6 +470,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 1,
     },
     {
       id: 58,
@@ -435,6 +483,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 59,
@@ -447,6 +496,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 4,
     },
     {
       id: 60,
@@ -459,6 +509,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 61,
@@ -471,6 +522,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 3,
     },
     {
       id: 62,
@@ -483,6 +535,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 63,
@@ -495,6 +548,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 64,
@@ -507,6 +561,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 7,
     },
     {
       id: 65,
@@ -519,6 +574,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 66,
@@ -531,6 +587,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 67,
@@ -543,6 +600,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 1,
     },
     {
       id: 68,
@@ -555,6 +613,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 69,
@@ -567,6 +626,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 5,
     },
     {
       id: 70,
@@ -579,6 +639,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 71,
@@ -591,9 +652,10 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
   ]);
-  const defaultProductList = ref([
+  const defaultProductList = ref<ProductDto[]>([
     {
       id: 23,
       url: "",
@@ -605,6 +667,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "300₺",
       productRate: 4,
       stockCount: 4,
+      rate: 4,
     },
     {
       id: 24,
@@ -617,6 +680,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 5,
       stockCount: 42,
+      rate: 3,
     },
     {
       id: 25,
@@ -629,6 +693,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "450₺",
       productRate: 2,
       stockCount: 200,
+      rate: 0,
     },
     {
       id: 26,
@@ -641,6 +706,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "600₺",
       productRate: 3,
       stockCount: 1,
+      rate: 3,
     },
     {
       id: 27,
@@ -653,6 +719,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "10₺",
       productRate: 4,
       stockCount: 67,
+      rate: 4,
     },
     {
       id: 28,
@@ -665,6 +732,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
     {
       id: 29,
@@ -677,6 +745,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 3.5,
     },
     {
       id: 30,
@@ -689,6 +758,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 0,
     },
     {
       id: 31,
@@ -701,6 +771,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 1.5,
     },
     {
       id: 32,
@@ -713,6 +784,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 33,
@@ -725,6 +797,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 34,
@@ -737,6 +810,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 35,
@@ -749,6 +823,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "10₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 36,
@@ -761,6 +836,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 37,
@@ -773,6 +849,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 38,
@@ -785,6 +862,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 2,
     },
     {
       id: 39,
@@ -797,6 +875,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 40,
@@ -809,6 +888,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 41,
@@ -821,6 +901,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 42,
@@ -833,6 +914,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 43,
@@ -845,6 +927,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 44,
@@ -857,6 +940,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 45,
@@ -869,6 +953,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 2,
     },
     {
       id: 46,
@@ -881,6 +966,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 47,
@@ -893,6 +979,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 48,
@@ -905,6 +992,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 49,
@@ -917,6 +1005,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 50,
@@ -929,6 +1018,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 4,
     },
     {
       id: 51,
@@ -941,6 +1031,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 52,
@@ -953,6 +1044,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 9,
     },
     {
       id: 53,
@@ -965,6 +1057,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 54,
@@ -977,6 +1070,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 5,
     },
     {
       id: 55,
@@ -989,6 +1083,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 56,
@@ -1001,6 +1096,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
     {
       id: 57,
@@ -1013,6 +1109,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "1020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 1,
     },
     {
       id: 58,
@@ -1025,6 +1122,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 5,
+      rate: 2,
     },
     {
       id: 59,
@@ -1037,6 +1135,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "301₺",
       productRate: 5,
       stockCount: 2,
+      rate: 4,
     },
     {
       id: 60,
@@ -1049,6 +1148,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 61,
@@ -1061,6 +1161,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 3,
     },
     {
       id: 62,
@@ -1073,6 +1174,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 63,
@@ -1085,6 +1187,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 2,
     },
     {
       id: 64,
@@ -1097,6 +1200,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 7,
     },
     {
       id: 65,
@@ -1109,6 +1213,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 2,
     },
     {
       id: 66,
@@ -1121,6 +1226,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 67,
@@ -1133,6 +1239,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 1,
     },
     {
       id: 68,
@@ -1145,6 +1252,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "940₺",
       productRate: 2,
       stockCount: 200,
+      rate: 2,
     },
     {
       id: 69,
@@ -1157,6 +1265,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "700₺",
       productRate: 3,
       stockCount: 167,
+      rate: 5,
     },
     {
       id: 70,
@@ -1169,6 +1278,7 @@ export const useProductStore = defineStore("productStore", () => {
       price: "30₺",
       productRate: 4,
       stockCount: 67,
+      rate: 2,
     },
     {
       id: 71,
@@ -1181,11 +1291,16 @@ export const useProductStore = defineStore("productStore", () => {
       price: "2020₺",
       productRate: 5,
       stockCount: 54,
+      rate: 3,
     },
   ]);
+  const selectedProduct = ref<(ProductDto & {quantity: number})[]>([])
 
   const rangeSliderValue = ref([] as (number | string)[]);
-  const isRangeIconToPrice = ref(false)
+  const rateValue = ref('' as number | string);
+  const productNameValue = ref('' as string);
+  const brandNameValue = ref('' as string);
+  const isComponentShowToFilter = ref(false)
 
   const maxPrice = computed(() => {
     let count = 0;
@@ -1205,8 +1320,16 @@ export const useProductStore = defineStore("productStore", () => {
     return count;
   });
 
+  const resetFilter = async () => {
+    rangeSliderValue.value = [minPrice.value, maxPrice.value]
+    rateValue.value = ''
+    productNameValue.value = ''
+    brandNameValue.value = ''
+    filterProduct()
+  }
+
   const filterProduct = async () => {
-    let allProducts = JSON.parse(JSON.stringify(defaultProductList.value));
+    let allProducts = JSON.parse(JSON.stringify(defaultProductList.value)) as ProductDto[];
     console.log("rangeSliderValue", rangeSliderValue.value);
 
     const categoryStore = await useCategoryStore();
@@ -1222,27 +1345,64 @@ export const useProductStore = defineStore("productStore", () => {
       rangeSliderValue.value[0]
     ) {
       allProducts = allProducts.filter(
-        e => Number(e.price.replace(/₺/g, "")) >= rangeSliderValue.value[0]
+        e => Number(e.price.replace(/₺/g, "")) >= (rangeSliderValue.value[0] as number)
       );
     }
+
     if (
       maxPrice.value != rangeSliderValue.value[1] &&
       rangeSliderValue.value[1]
     ) {
       allProducts = allProducts.filter(
-        e => Number(e.price.replace(/₺/g, "")) <= rangeSliderValue.value[1]
+        e => Number(e.price.replace(/₺/g, "")) <= (rangeSliderValue.value[1] as number)
       );
     }
+    console.log(rateValue.value, rateValue.value === '0')
+    if(rateValue.value || rateValue.value === 0) {
+        allProducts = allProducts.filter(
+            e => e.rate == rateValue.value
+        );
+    }
 
+    if(productNameValue.value) {
+        allProducts = allProducts.filter(
+            e => e.displayName.toLocaleLowerCase().includes(productNameValue.value.toLocaleLowerCase())
+        );
+    }
+
+    if(brandNameValue.value) {
+        allProducts = allProducts.filter(
+            e => e.brandName.toLocaleLowerCase().includes(brandNameValue.value.toLocaleLowerCase())
+        );
+    }
+        
     productList.value = allProducts;
   };
+
+  const selectProduct = (productId: number) => {
+    if(selectedProduct.value.some( e => e.id === productId)) {
+        selectedProduct.value = selectedProduct.value.map(e => {
+            if(e.id === productId) e.quantity++
+            return e
+        })
+        return 
+    } 
+    selectedProduct.value.push({...productList.value.find( e => e.id === productId) ?? ({} as ProductDto), quantity: 1})
+  }
+
   return {
     productList,
     defaultProductList,
     rangeSliderValue,
     maxPrice,
     minPrice,
-    isRangeIconToPrice,
+    isComponentShowToFilter,
+    rateValue,
+    productNameValue,
+    brandNameValue,
+    selectedProduct,
     filterProduct,
+    resetFilter,
+    selectProduct,
   };
 });

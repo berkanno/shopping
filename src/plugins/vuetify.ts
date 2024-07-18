@@ -10,8 +10,11 @@ import 'vuetify/styles'
 
 // Composables
 import { createVuetify, type ThemeDefinition } from 'vuetify'
-import { aliases } from 'vuetify/iconsets/md'
-import { mdi } from 'vuetify/iconsets/mdi'
+import { aliases, mdi } from 'vuetify/iconsets/mdi';
+import 'vuetify/styles';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+import '@mdi/font/css/materialdesignicons.css';
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 const customTheme: ThemeDefinition = {
@@ -39,6 +42,8 @@ const customTheme: ThemeDefinition = {
 }
 
 export default createVuetify({
+  components,
+  directives,
   theme: {
     defaultTheme: "customTheme",
     themes: {

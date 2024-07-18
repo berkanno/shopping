@@ -7,7 +7,7 @@
     min-height="1200"
     max-height="2000"
   >
-    <v-card-text class="pt-0 px-0">
+    <v-card-text class="pt-0 px-1">
       <v-row class="d-flex justify-center">
         <v-col
           sm="12"
@@ -40,6 +40,11 @@
                       {{ item.displayName }}
                     </v-col>
                     <v-col
+                    class="d-flex justify-center"
+                    >
+                      <v-rating :model-value="item.rate" readonly active-color="teal-darken-1" half-increments ></v-rating>
+                    </v-col>
+                    <v-col
                       class="font-weight-light text-center text-body-1 text-grey py-0"
                     >
                       {{ item.name }}
@@ -63,7 +68,7 @@
                 </v-col>
                 <v-col class="d-flex justify-center fill-height align-end">
                   <v-btn
-                    width="40%"
+                    width="30%"
                     color="teal-darken-4"
                     variant="text"
                     :elevation="0"
@@ -72,11 +77,21 @@
                     <v-icon size="25"> mdi-information-outline </v-icon>
                   </v-btn>
                   <v-btn
-                    width="40%"
+                    width="30%"
+                    color="teal-darken-4"
+                    variant="text"
+                    :elevation="0"
+                    class="mx-1"
+                  >
+                    <v-icon size="25"> mdi-heart-outline </v-icon>
+                  </v-btn>
+                  <v-btn
+                    width="30%"
                     color="purple-darken-1"
                     :elevation="0"
                     variant="text"
                     class="text-decoration-underline mx-1"
+                    @click="selectProduct(item.id)"
                   >
                     <v-icon color="purple-darken-4" size="25"
                       >mdi-cart-arrow-down</v-icon
@@ -101,4 +116,5 @@ const {  } = storeToRefs(categoryStore);
 
 const productStore = useProductStore();
 const { productList } = storeToRefs(productStore);
+const { selectProduct } = productStore;
 </script>
