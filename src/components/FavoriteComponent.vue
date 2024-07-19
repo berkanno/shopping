@@ -28,7 +28,10 @@
                                     style="max-height: 600px;">
                                     <v-row v-for="(item, index) in selectedFavoriteProduct" :key="index"
                                         class="border-sm border-opacity-50 border-black rounded-lg mb-2">
-                                        <v-col cols="6 py-1 text-overline d-flex align-center"> {{ item.displayName }}
+                                        <v-col cols="9 py-1 text-overline d-flex align-center"> {{ item.displayName }}
+                                        </v-col>
+                                        <v-col class="d-flex justify-end" >
+                                            <v-btn icon="mdi-trash-can" color="transparent" class="text-red-darken-1 elevation-0" @click="selectedFavoriteProduct = selectedFavoriteProduct.filter((e,i) => i != index)" ></v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-col>
