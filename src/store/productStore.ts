@@ -1301,6 +1301,7 @@ export const useProductStore = defineStore("productStore", () => {
   const productNameValue = ref('' as string);
   const brandNameValue = ref('' as string);
   const isComponentShowToFilter = ref(false)
+  const isCartInputIcon = ref(false)
 
   const maxPrice = computed(() => {
     let count = 0;
@@ -1384,10 +1385,9 @@ export const useProductStore = defineStore("productStore", () => {
         selectedProduct.value = selectedProduct.value.map(e => {
             if(e.id === productId) e.quantity++
             return e
-        })
-        return 
-    } 
-    selectedProduct.value.push({...productList.value.find( e => e.id === productId) ?? ({} as ProductDto), quantity: 1})
+        }) 
+    } else selectedProduct.value.push({...productList.value.find( e => e.id === productId) ?? ({} as ProductDto), quantity: 1})
+    console.log(selectedProduct.value)
   }
 
   return {
@@ -1401,6 +1401,7 @@ export const useProductStore = defineStore("productStore", () => {
     productNameValue,
     brandNameValue,
     selectedProduct,
+    isCartInputIcon,
     filterProduct,
     resetFilter,
     selectProduct,

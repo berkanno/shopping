@@ -35,14 +35,14 @@
                 <v-col class="fill-height d-flex align-center">
                   <v-row class="flex-column">
                     <v-col
-                      class="font-weight-bold text-center text-body-1 py-0 text-uppercase"
-                    >
-                      {{ item.displayName }}
-                    </v-col>
-                    <v-col
                     class="d-flex justify-center"
                     >
                       <v-rating :model-value="item.rate" readonly active-color="teal-darken-1" half-increments ></v-rating>
+                    </v-col>
+                    <v-col cols="12"
+                      class="font-weight-bold text-center text-body-1 py-0 text-uppercase text-truncate"
+                    >
+                      {{ item.displayName }}
                     </v-col>
                     <v-col
                       class="font-weight-light text-center text-body-1 text-grey py-0"
