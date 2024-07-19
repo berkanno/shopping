@@ -24,13 +24,36 @@
           >
             <v-card-text class="fill-height">
               <v-row class="flex-column">
-                <v-col>
+                <v-col class="my-2">
                   <v-sheet
                     width="100%"
                     border="border-sm border-success opacity-100"
                     height="200px"
                     color="grey-lighten-2"
-                  ></v-sheet>
+                  >
+                </v-sheet>
+                </v-col>
+                <v-col v-if="item.stockCount <= 5" >
+                  <v-row>
+                    <v-spacer />
+                    <v-col cols="auto pa-0 text-grey text-overline d-flex align-center">
+                      {{ `Kalan Stok Miktarı:` }}
+                    </v-col>
+                    <v-col cols="auto py-0 text-red font-weight-bold text-decoration-underline text-h6">
+                      {{ `${item.stockCount} Adet` }}
+                    </v-col>
+                  </v-row>
+                </v-col>
+                <v-col v-else class="py-3">
+                  <v-row>
+                    <v-spacer />
+                    <v-col cols="auto pa-0 text-grey text-caption d-flex align-center">
+                      {{ `Maksimum Sipariş Miktarı:` }}
+                    </v-col>
+                    <v-col cols="auto py-0 text-black font-weight-bold text-overline">
+                      {{ `${item.stockCount} Adet` }}
+                    </v-col>
+                  </v-row>
                 </v-col>
                 <v-col class="fill-height d-flex align-center">
                   <v-row class="flex-column">
@@ -44,8 +67,8 @@
                     >
                       {{ item.displayName }}
                     </v-col>
-                    <v-col
-                      class="font-weight-light text-center text-body-1 text-grey py-0"
+                    <v-col cols="12"
+                      class="font-weight-light text-center text-body-1 text-grey py-0 text-truncate"
                     >
                       {{ item.name }}
                     </v-col>
@@ -68,33 +91,28 @@
                 </v-col>
                 <v-col class="d-flex justify-center fill-height align-end">
                   <v-btn
-                    width="30%"
+                    width="40%"
                     color="teal-darken-4"
                     variant="text"
                     :elevation="0"
                     class="mx-1"
                   >
-                    <v-icon size="25"> mdi-information-outline </v-icon>
+                    <v-icon size="25" color="red-darken-1" > mdi-heart-outline </v-icon>
                   </v-btn>
                   <v-btn
-                    width="30%"
-                    color="teal-darken-4"
-                    variant="text"
-                    :elevation="0"
-                    class="mx-1"
-                  >
-                    <v-icon size="25"> mdi-heart-outline </v-icon>
-                  </v-btn>
-                  <v-btn
-                    width="30%"
+                    width="40%"
                     color="purple-darken-1"
                     :elevation="0"
                     variant="text"
-                    class="text-decoration-underline mx-1"
+                    class="mx-1"
+                    :readonly="item.stockCount === selectedProduct.find(e => e.id === item.id)?.quantity"
                     @click="selectProduct(item.id)"
                   >
-                    <v-icon color="purple-darken-4" size="25"
+                    <v-icon v-if="!selectedProduct.some(e => e.id === item.id)" :color="item.stockCount === selectedProduct.find(e => e.id === item.id)?.quantity ? 'grey-darken-1' :'purple-darken-4'" size="25"
                       >mdi-cart-arrow-down</v-icon
+                    >
+                    <v-icon v-else :color="item.stockCount === selectedProduct.find(e => e.id === item.id)?.quantity ? 'grey-darken-1' : 'teal-darken-1'" size="25"
+                      >mdi-cart-plus</v-icon
                     >
                   </v-btn>
                 </v-col>
@@ -115,6 +133,6 @@ const categoryStore = useCategoryStore();
 const {  } = storeToRefs(categoryStore);
 
 const productStore = useProductStore();
-const { productList } = storeToRefs(productStore);
+const { productList, selectedProduct } = storeToRefs(productStore);
 const { selectProduct } = productStore;
 </script>

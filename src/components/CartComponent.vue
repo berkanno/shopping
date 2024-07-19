@@ -5,7 +5,16 @@
                 }`">
                 <v-expansion-panel-title
                     class="text-uppercase ext-body-2 text-teal-darken-1 font-weight-medium d-flex justify-center"
-                    expand-icon="mdi-chevron-down" collapse-icon="mdi-chevron-up">Sepet</v-expansion-panel-title>
+                    expand-icon="mdi-chevron-down" collapse-icon="mdi-chevron-up">
+                    <v-row>
+                        <v-col cols="auto">
+                            Sepet
+                        </v-col>
+                        <v-col v-if="selectedProduct.length" cols="auto px-0">
+                            {{ `( ${selectedProduct.length} )` }}
+                        </v-col>
+                    </v-row>
+                </v-expansion-panel-title>
                 <v-expansion-panel-text>
                     <v-row>
                         <v-col class="px-5">
@@ -16,7 +25,8 @@
                                 <v-spacer />
                                 <v-col
                                     cols="6 font-weight-light text-h6 py-0 text-teal-darken-1 text-decoration-underline text-center">
-                                    Miktar <v-icon class="text-orange-darken-1 elevation-0" icon="mdi-swap-horizontal"
+                                    Miktar <v-icon v-if="selectedProduct.length"
+                                        class="text-orange-darken-1 elevation-0" icon="mdi-swap-horizontal"
                                         color="transaparent" @click="() => isCartInputIcon = !isCartInputIcon"></v-icon>
 
                                 </v-col>
@@ -53,24 +63,24 @@
                                                     </v-row>
                                                 </v-col>
                                                 <v-col cols="auto pa-0">
-                                                    <v-btn icon="mdi-plus" class="text-teal-darken-1"
+                                                    <v-btn :icon="item.quantity == item.stockCount ? 'mdi-cancel' :'mdi-plus'" :class="item.quantity == item.stockCount ? 'grey-lighten-3' :'text-teal-darken-1'"
                                                         :readonly="item.quantity == item.stockCount" :elevation="0"
                                                         color="transparent" @click="item.quantity++"></v-btn>
                                                 </v-col>
                                             </v-row>
                                         </v-col>
                                         <v-col cols="12 text-caption text-grey">
-                                            <v-row justify="center" >
+                                            <v-row justify="center">
                                                 <v-col cols="auto">
                                                     {{ `Maksimum Sipariş Miktarı:
-                                                        ` }}
+                                                    ` }}
                                                 </v-col>
                                                 <v-col cols="auto px-0 text-decoration-underline text-black">
                                                     {{ `
-                                                        ${item.stockCount} Adet` }}
+                                                    ${item.stockCount} Adet` }}
                                                 </v-col>
                                             </v-row>
-                                            </v-col>
+                                        </v-col>
                                     </v-row>
                                 </v-col>
                                 <v-col v-else>
@@ -78,7 +88,7 @@
                                         <v-col cols="6 text-h6 py-0">
                                             - </v-col>
                                         <v-spacer />
-                                        <v-col cols="5 text-h6 py-0 d-flex justify-center ">
+                                        <v-col cols="6 text-h6 py-0 d-flex justify-center ">
                                             - </v-col>
                                     </v-row>
                                 </v-col>
@@ -107,7 +117,7 @@ const blurModelValueInput = ($event: { target: { value: string } }, _selectedPro
             if (_selectedProductIndex === i) e.quantity = e.stockCount
             return e
         })
-    }
+    } else if (!value) selectedProduct.value = selectedProduct.value.filter( (e,i) => i !== _selectedProductIndex)
 }
 
 const isNumber = (evt: KeyboardEvent, isDot = false, isComma = false) => {
