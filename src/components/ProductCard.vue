@@ -96,8 +96,10 @@
                     variant="text"
                     :elevation="0"
                     class="mx-1"
+                    @click="selectFavoriteProduct(item.id)"
                   >
-                    <v-icon size="25" color="red-darken-1" > mdi-heart-outline </v-icon>
+                    <v-icon size="25" color="red-darken-1" v-if="!selectedFavoriteProduct.some(e => e.id === item.id)"> mdi-heart-outline </v-icon>
+                    <v-icon size="25" color="red-darken-1" v-else> mdi-heart </v-icon>
                   </v-btn>
                   <v-btn
                     width="40%"
@@ -133,6 +135,6 @@ const categoryStore = useCategoryStore();
 const {  } = storeToRefs(categoryStore);
 
 const productStore = useProductStore();
-const { productList, selectedProduct } = storeToRefs(productStore);
-const { selectProduct } = productStore;
+const { productList, selectedProduct, selectedFavoriteProduct } = storeToRefs(productStore);
+const { selectProduct, selectFavoriteProduct } = productStore;
 </script>

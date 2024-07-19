@@ -11,6 +11,7 @@ declare module 'vue' {
     CategoryCard: typeof import('./src/components/CategoryCard.vue')['default']
     Content: typeof import('./src/components/Content.vue')['default']
     copy: typeof import('./src/components/FilterComponent copy.vue')['default']
+    FavoriteComponent: typeof import('./src/components/FavoriteComponent.vue')['default']
     FilterComponent: typeof import('./src/components/FilterComponent.vue')['default']
     LoginComponent: typeof import('./src/components/LoginComponent.vue')['default']
     ProductCard: typeof import('./src/components/ProductCard.vue')['default']

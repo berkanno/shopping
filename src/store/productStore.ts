@@ -1295,6 +1295,7 @@ export const useProductStore = defineStore("productStore", () => {
     },
   ]);
   const selectedProduct = ref<(ProductDto & {quantity: number})[]>([])
+  const selectedFavoriteProduct = ref<ProductDto[]>([])
 
   const rangeSliderValue = ref([] as (number | string)[]);
   const rateValue = ref('' as number | string);
@@ -1387,7 +1388,11 @@ export const useProductStore = defineStore("productStore", () => {
             return e
         }) 
     } else selectedProduct.value.push({...productList.value.find( e => e.id === productId) ?? ({} as ProductDto), quantity: 1})
-    console.log(selectedProduct.value)
+  }
+  const selectFavoriteProduct = (productId: number) => {
+    if(!selectedFavoriteProduct.value.some( e => e.id === productId)) {
+      selectedFavoriteProduct.value.push({...productList.value.find( e => e.id === productId) ?? ({} as ProductDto)})
+    }
   }
 
   return {
@@ -1401,9 +1406,11 @@ export const useProductStore = defineStore("productStore", () => {
     productNameValue,
     brandNameValue,
     selectedProduct,
+    selectedFavoriteProduct,
     isCartInputIcon,
     filterProduct,
     resetFilter,
     selectProduct,
+    selectFavoriteProduct,
   };
 });

@@ -1,5 +1,5 @@
 <template>
-    <v-col class="">
+    <v-col class="py-0">
         <v-expansion-panels :elevation="0" v-model="expandedSecondVModel">
             <v-expansion-panel class="elevation-0" :class="`border-success border-opacity-100 ${expandedSecondVModel == 0 ? 'border-sm ' : 'border-b-sm'
                 }`">
