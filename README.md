@@ -1,4 +1,4 @@
-# Shopping (3x3)
+# Shopping
 
 Bu proje Vue.js'in Typescript şablonu ile hazırlanmış basit bir E-ticaret projesidir.
 
